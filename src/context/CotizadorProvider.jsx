@@ -2,11 +2,15 @@ import { createContext } from "react"
 
 const CotizadorContext = createContext()
 
-const CotizadorProvider = ({children}) => {
+const CotizadorProvider = ({ children }) => {
+  
+  const hola = "Hola Mundo"
 
   return (
     <CotizadorContext.Provider
-      value={{}}
+      value={{
+        hola
+      }}
     >
       {children}
     </CotizadorContext.Provider>
