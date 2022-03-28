@@ -4,12 +4,12 @@ import CotizadorContext from "../context/CotizadorProvider";
 
 const Formulario = () => {
 
-	const { modal, setModal } = useContext(CotizadorContext);
+	const { cambiarState } = useContext(CotizadorContext);
 	
 
 	return (
 		<>
-			<button onClick={() => setModal(true)}>Mostar Modal</button>
+			<button onClick={cambiarState}>Mostar Modal</button>
 			<form>
 				<div className=" my-5">
 					<label className=" block mb-3 font-bold text-gray-400 uppercase">
