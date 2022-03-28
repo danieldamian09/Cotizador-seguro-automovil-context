@@ -6,10 +6,15 @@ const CotizadorProvider = ({ children }) => {
   
   const hola = "Hola Mundo"
 
+  const fnHolaMundo = () => {
+    console.log("Hola mundo desde el provider")
+  }
+
   return (
     <CotizadorContext.Provider
       value={{
-        hola
+        hola,
+        fnHolaMundo
       }}
     >
       {children}

@@ -4,9 +4,11 @@ import CotizadorContext from "../context/CotizadorProvider";
 
 const Formulario = () => {
 
-	const { hola } = useContext(CotizadorContext);
+	const { hola, fnHolaMundo } = useContext(CotizadorContext);
 	
 	console.log(hola)
+	
+	fnHolaMundo()
 
 	return (
 		<>
