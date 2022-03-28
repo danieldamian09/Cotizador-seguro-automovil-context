@@ -4,14 +4,12 @@ import CotizadorContext from "../context/CotizadorProvider";
 
 const Formulario = () => {
 
-	const { hola, fnHolaMundo } = useContext(CotizadorContext);
+	const { modal, setModal } = useContext(CotizadorContext);
 	
-	console.log(hola)
-	
-	fnHolaMundo()
 
 	return (
 		<>
+			<button onClick={() => setModal(true)}>Mostar Modal</button>
 			<form>
 				<div className=" my-5">
 					<label className=" block mb-3 font-bold text-gray-400 uppercase">

@@ -1,20 +1,17 @@
-import { createContext } from "react"
+import { createContext, useState } from "react"
 
 const CotizadorContext = createContext()
 
 const CotizadorProvider = ({ children }) => {
-  
-  const hola = "Hola Mundo"
 
-  const fnHolaMundo = () => {
-    console.log("Hola mundo desde el provider")
-  }
+  const [modal, setModal] = useState(false)
+  
 
   return (
     <CotizadorContext.Provider
       value={{
-        hola,
-        fnHolaMundo
+        modal,
+        setModal
       }}
     >
       {children}
