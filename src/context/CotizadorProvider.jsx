@@ -1,30 +1,13 @@
-import { createContext, useState } from "react"
+import {createContext, useState} from "react";
 
-const CotizadorContext = createContext()
+const CotizadorContext = createContext();
 
-const CotizadorProvider = ({ children }) => {
+const CotizadorProvider = ({children}) => {
+	return (
+		<CotizadorContext.Provider value={{}}>{children}</CotizadorContext.Provider>
+	);
+};
 
-  const [modal, setModal] = useState(false)
+export {CotizadorProvider};
 
-  const cambiarState = () => {
-    setModal(!modal)
-  }
-  
-
-  return (
-    <CotizadorContext.Provider
-      value={{
-        modal,
-        cambiarState
-      }}
-    >
-      {children}
-    </CotizadorContext.Provider>
-  )
-}
-
-export {
-  CotizadorProvider
-}
-
-export default CotizadorContext
+export default CotizadorContext;

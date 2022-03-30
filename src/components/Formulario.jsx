@@ -1,17 +1,10 @@
-import { Fragment } from "react"
-import { MARCAS, YEARS, PLANES } from "../constants";
+import {Fragment} from "react";
+import {MARCAS, YEARS, PLANES} from "../constants";
 import useCotizador from "../hooks/useCotizador";
 
 const Formulario = () => {
-
-	const { cambiarState, modal } = useCotizador();
-	
-	console.log(modal);
-	
-
 	return (
 		<>
-			<button onClick={cambiarState}>Mostar Modal</button>
 			<form>
 				<div className=" my-5">
 					<label className=" block mb-3 font-bold text-gray-400 uppercase">
@@ -34,7 +27,7 @@ const Formulario = () => {
 						Año
 					</label>
 					<select
-						name="marca"
+						name="year"
 						className=" w-full p-3 bg-white border border-gray-200"
 					>
 						<option value="">--Selecciona Año--</option>
@@ -48,17 +41,21 @@ const Formulario = () => {
 				<div className=" my-5">
 					<label className=" block mb-3 font-bold text-gray-400 uppercase">
 						Elige un Plan
-          </label>
-          <div className=" flex gap-3 items-center">
-            {PLANES.map((plan) => (
-              <Fragment key={plan.id}>
-                <label>{plan.nombre}</label>
-                <input type="radio" name="plan" value={plan.id} />
-              </Fragment>
-            ))}
-          </div>
-        </div>
-        <input className=" w-full bg-indigo-500 text-white hover:bg-indigo-600 transition-colors cursor-pointer p-3 uppercase font-bold" type="submit" value="Cotizar" />
+					</label>
+					<div className=" flex gap-3 items-center">
+						{PLANES.map((plan) => (
+							<Fragment key={plan.id}>
+								<label>{plan.nombre}</label>
+								<input type="radio" name="plan" value={plan.id} />
+							</Fragment>
+						))}
+					</div>
+				</div>
+				<input
+					className=" w-full bg-indigo-500 text-white hover:bg-indigo-600 transition-colors cursor-pointer p-3 uppercase font-bold"
+					type="submit"
+					value="Cotizar"
+				/>
 			</form>
 		</>
 	);
