@@ -9,6 +9,8 @@ const CotizadorProvider = ({ children }) => {
 		year: "",
 		plan: ""
 	})
+
+	const [error, setError] = useState("");
 	
 	const handleChangeDatos = (e) => {
 		setDatos({
@@ -21,7 +23,9 @@ const CotizadorProvider = ({ children }) => {
 		<CotizadorContext.Provider
 			value={{
 				datos,
-				handleChangeDatos
+				handleChangeDatos,
+				error,
+				setError,
 			}}
 		>{children}</CotizadorContext.Provider>
 	);
