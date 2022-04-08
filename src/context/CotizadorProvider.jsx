@@ -19,6 +19,24 @@ const CotizadorProvider = ({ children }) => {
 		})
 	}	
 
+	const cotizarSeguro = () => {
+		// Base para el calculo
+
+		// Obtener diferencia de años
+
+
+		// Pos cada año anterior hay que restar el 3%
+
+		// Americano incrementa costo 15%
+		// Europeo incrementa costo 30%
+		// Asiatico incrementa costo 5%
+
+
+		// Si el plan es basico aumenta 20%
+		// Si el plan es completo aumenta 50%
+		
+	}
+
 	return (
 		<CotizadorContext.Provider
 			value={{
@@ -26,6 +44,7 @@ const CotizadorProvider = ({ children }) => {
 				handleChangeDatos,
 				error,
 				setError,
+				cotizarSeguro,
 			}}
 		>{children}</CotizadorContext.Provider>
 	);
