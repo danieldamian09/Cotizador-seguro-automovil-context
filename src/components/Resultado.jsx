@@ -1,4 +1,4 @@
-import React from "react";
+import {useMemo, useRef} from "react";
 import {MARCAS, PLANES} from "../constants/index";
 import useCotizador from "../hooks/useCotizador";
 
@@ -6,9 +6,17 @@ const Resultado = () => {
 	const {resultado, datos} = useCotizador();
 	const {marca, year, plan} = datos;
 
-  const [nombreMarca] = MARCAS.filter((m) => m.id === Number(marca));
-  
-  const [nombrePlan] = PLANES.filter((p) => p.id === Number(plan));
+	const yearRef = useRef(year);
+
+	const [nombreMarca] = useMemo(
+		() => MARCAS.filter((m) => m.id === Number(marca)),
+		[resultado]
+	);
+
+	const [nombrePlan] = useMemo(
+		() => PLANES.filter((p) => p.id === Number(plan)),
+		[resultado]
+	);
 
 	if (resultado === 0) return null;
 	return (
@@ -17,16 +25,16 @@ const Resultado = () => {
 			<p className=" my-2">
 				<span className=" font-bold">Marca: </span>
 				{nombreMarca.nombre}
-      </p>
-      <p className=" my-2">
+			</p>
+			<p className=" my-2">
 				<span className=" font-bold">Plan: </span>
 				{nombrePlan.nombre}
-      </p>
-      <p className=" my-2">
+			</p>
+			<p className=" my-2">
 				<span className=" font-bold">Año del Auto: </span>
-				{year}
-      </p>
-      <p className=" my-2 text-2xl">
+				{yearRef.current}
+			</p>
+			<p className=" my-2 text-2xl">
 				<span className=" font-bold">Total Cotizacion: </span>
 				{resultado}
 			</p>
