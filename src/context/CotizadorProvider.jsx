@@ -13,6 +13,7 @@ const CotizadorProvider = ({ children }) => {
 
 	const [error, setError] = useState("");
 	const [resultado, setResultado] = useState(0);
+	const [cargando, setCargando] = useState(false);
 	
 	const handleChangeDatos = (e) => {
 		setDatos({
@@ -47,7 +48,13 @@ const CotizadorProvider = ({ children }) => {
 		//* Mostrar el resultado en Formato de Moneda cons dos decimales
 		resultado = formatearDinero(resultado);
 		//* console.log(resultado);
-		setResultado(resultado);
+
+		setCargando(true);
+
+		setTimeout(() => {
+			setResultado(resultado);
+			setCargando(false);
+		}, 3000)
 
 	}
 
@@ -59,6 +66,8 @@ const CotizadorProvider = ({ children }) => {
 				error,
 				setError,
 				cotizarSeguro,
+				resultado,
+				cargando,
 			}}
 		>{children}</CotizadorContext.Provider>
 	);
