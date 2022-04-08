@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { obtenerDiferenciaYear } from "../helpers";
+import { obtenerDiferenciaYear, calcularMarca, calculaPlan, formatearDinero } from "../helpers";
 
 const CotizadorContext = createContext();
 
@@ -12,6 +12,7 @@ const CotizadorProvider = ({ children }) => {
 	})
 
 	const [error, setError] = useState("");
+	const [resultado, setResultado] = useState(0);
 	
 	const handleChangeDatos = (e) => {
 		setDatos({
@@ -21,23 +22,32 @@ const CotizadorProvider = ({ children }) => {
 	}	
 
 	const cotizarSeguro = () => {
-		// Base para el calculo
+		//* Base para el calculo
 		let resultado = 2000;
 
-		// Obtener diferencia de años
+		//* Obtener diferencia de años
 		const diferencia = obtenerDiferenciaYear(datos.year);
 
-		// Pos cada año anterior hay que restar el 3%
+		//* Pos cada año anterior hay que restar el 3%
 		resultado -= ((diferencia * 3) * resultado) / 100;
-		console.log(resultado);
+		//* console.log(resultado);
 
-		// Americano incrementa costo 15%
-		// Europeo incrementa costo 30%
-		// Asiatico incrementa costo 5%
+		//* Europeo incrementa costo 30%
+		//* Americano incrementa costo 15%
+		//* Asiatico incrementa costo 5%
+		resultado *= calcularMarca(datos.marca)
+		//* console.log(resultado);	
 
 
-		// Si el plan es basico aumenta 20%
-		// Si el plan es completo aumenta 50%
+		//* Si el plan es basico aumenta 20%
+		//* Si el plan es completo aumenta 50%
+		resultado *= calculaPlan(datos.plan)
+		//* console.log(resultado);
+
+		//* Mostrar el resultado en Formato de Moneda cons dos decimales
+		resultado = formatearDinero(resultado);
+		//* console.log(resultado);
+		setResultado(resultado);
 
 	}
 
